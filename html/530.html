@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Balance 530 - Streetwear Store</title>
+  <link rel="icon" href="tienda\logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --neon-color: #39ff14; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .volver {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--neon-color);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+      transition: all 0.3s ease;
+    }
+
+    .volver a:hover {
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    .producto p {
+      font-size: 0.85em;
+      color: var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+  </style>
+  <script>
+    const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+    document.documentElement.style.setProperty('--neon-color', randomColor);
+  </script>
+</head>
+<body>
+
+<header>
+  <img src="tienda/img_index/logo_nb.png">
+</header>
+<div class="volver">
+  <a href="tienda\index.html">⬅ Volver al inicio</a>
+</div>
+<section class="catalogo">
+  <div class="producto">
+    <img src="html\img\balance\530\2.png"><h3>New Balance 350 Classic</h3>
+  </div>
+  <div class="producto">
+     <img src="html\img\balance\530\3.png"><h3>New Balance 350 Gold</h3>
+  </div>
+  <div class="producto">
+      <img src="html\img\balance\530\4.png"><h3>New Balance 350 Blue</h3>
+  </div>
+ <div class="producto">
+  <img src="html\img\balance\530\5.png"><h3>New Balance 350 Blue Sea</h3>
+  </div>    
+  <div class="producto">
+  <img src="html\img\balance\530\6.png"><h3>New Balance 350 Platinum</h3>
+  </div>
+  <div class="producto">
+  <img src="html\img\balance\530\7.png"><h3>New Balance 350 Grey</h3>
+  </div>
+    <div class="producto">
+<img src="html\img\balance\530\8.png"><h3>New Balance 350 Red Hot</h3>
+    </div>
+  <div class="producto">
+<img src="html\img\balance\530\9.png"><h3>New Balance 350 Panda</h3>
+</div>
+<div class="producto">
+<img src="html\img\balance\530\10.png"><h3>New Balance 350 Green</h3>
+  </div>
+  <div class="producto">
+<img src="html\img\balance\530\11.png"><h3>New Balance 530 Purple</h3>
+  </div>
+   <div class="producto">
+<img src="html\img\balance\530\12.png"><h3>New Balance 530 Aqua</h3>
+  </div>
+   <div class="producto">
+<img src="html\img\balance\530\13.png"><h3>New Balance 530 Black and White</h3>
+  </div>
+   <div class="producto">
+<img src="html\img\balance\530\14.png"><h3>New Balance 530 Creme</h3>
+  </div>
+    <div class="producto">
+<img src="html\img\balance\530\15.png"><h3>New Balance 530 Black</h3>
+  </div>
+  <div class="producto">
+<img src="html\img\balance\530\16.png"><h3>New Balance 530 Silver</h3>
+  </div>
+    <!-- Agrega más productos aquí siguiendo la misma estructura -->
+</section>
+
+<footer>
+  <p>&copy; 2025 Streetwear Store - New Balance 530.</p>
+  <div class="social">
+    <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
+
+  </div>
+</footer>
+</body>
+</html>
