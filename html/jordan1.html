@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Jordan 1 - Streetwear Store</title>
+  <link rel="icon" href="tienda\logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --neon-color: #39ff14; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .volver {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--neon-color);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+      transition: all 0.3s ease;
+    }
+
+    .volver a:hover {
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    .producto p {
+      font-size: 0.85em;
+      color: var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+  </style>
+  <script>
+    const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+    document.documentElement.style.setProperty('--neon-color', randomColor);
+  </script>
+</head>
+<body>
+
+<header>
+  <img src="tienda/img_index/logo_jordan.png">
+</header>
+<div class="volver">
+  <a href="tienda\index.html">⬅ Volver al inicio</a>
+</div>
+
+<section class="catalogo">
+  <div class="producto">
+    <img src="tienda\html\img\jordan1\jordan.png"><h3>Air Jordan 1 - UNC</h3>
+  </div>
+  <div class="producto">
+     <img src="tienda\html\img\jordan1\travis1.png"><h3>Air Jordan 1 X Travis Scott</h3>
+  </div>
+  <div class="producto">
+     <img src="tienda\html\img\jordan1\jordan2.png"><h3>Air Jordan 1 - Union </h3>
+  </div>
+ <div class="producto">
+<img src="tienda\html\img\jordan1\jordan3.png"><h3>Air Jordan 1 - Retro OG </h3>
+  </div>    
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan4.png"><h3>Air Jordan 1 - Retro OG </h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan5.png"><h3>Air Jordan 1 - Reverse Panda </h3>
+  </div>
+    <div class="producto">
+<img src="tienda\html\img\jordan1\jordan6.png"><h3>Air Jordan 1 - Satin Bred</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan7.png"><h3>Air Jordan 1 - OG Yellow</h3>
+</div>
+<div class="producto">
+<img src="tienda\html\img\jordan1\jordan8.png"><h3>Air Jordan 1 - Reimagined</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan9.png"><h3>Air Jordan 1 - Retro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan10.png"><h3>Air Jordan 1 - Retro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan11.png"><h3>Air Jordan 1 - Retro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan12.png"><h3>Air Jordan 1 x Spiderman </h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan13.png"><h3>Air Jordan 1 - OG</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan14.png"><h3>Air Jordan 1 X Travis Scott</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan15.png"><h3>Air Jordan 1 - Panda</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan16.png"><h3>Air Jordan 1 - Retro Charol</h3>
+</div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan17.png"><h3>Air Jordan 1 x Off - White </h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan18.png"><h3>Air Jordan 1 - Lucky </h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan19.png"><h3>Air Jordan 1 X DIOR</h3>
+  </div>
+<div class="producto">
+<img src="tienda\html\img\jordan1\jordan20.png"><h3>Air Jordan 1 X OFF - WHITE</h3>
+  </div>
+<div class="producto">
+<img src="tienda\html\img\jordan1\jordan21.png"><h3>Air Jordan 1 X OFF - WHITE</h3>
+  </div>
+<div class="producto">
+<img src="tienda\html\img\jordan1\jordan22.png"><h3>Air Jordan 1 LOW X TRAVIS SCOTT</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan23.png"><h3>Air Jordan 1 LOW - Black Phantom</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\jordan1\jordan24.png"><h3>Air Jordan 1 LOW "Olive"</h3>
+  </div>
+  <!-- Agrega más productos aquí siguiendo la misma estructura -->
+</section>
+<footer>
+  <p>&copy; 2025 Streetwear Store - Air Jordan 1.</p>
+  <div class="social">
+    <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
+  </div>
+</footer>
+</body>
+</html>
