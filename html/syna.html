@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syna World - Streetwear Store</title>
+  <link rel="icon" href="tienda\logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --neon-color: #39ff14; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .volver {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--neon-color);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+      transition: all 0.3s ease;
+    }
+
+    .volver a:hover {
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    .producto p {
+      font-size: 0.85em;
+      color: var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    .subir {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      color: var(--neon-color);
+      font-size: 1.5em;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 0 10px var(--neon-color);
+      transition: transform 0.3s;
+    }
+
+    .subir:hover {
+      transform: scale(1.2);
+    }
+  </style>
+  <script>
+    const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+    document.documentElement.style.setProperty('--neon-color', randomColor);
+  </script>
+</head>
+<body id="inicio">
+<body>
+
+<header>
+  <img src="tienda/img_index/logo_syna.png">
+</header>
+<div class="volver">
+  <a href="tienda\index.html">⬅ Volver al inicio</a>
+</div>
+
+<section class="catalogo">
+  <div class="producto">
+    <img src="tienda\html\img\syna\1.png"><h3>Cortavientos Syna World</h3>
+  </div>
+  <div class="producto">
+    <img src="tienda\html\img\syna\2.png"><h3>Pantalón Syna World</h3>
+  </div>
+  <div class="producto">
+   <img src="tienda\html\img\syna\3.png"><h3>Camiseta Syna World x Nemzz</h3>
+  </div>
+ <div class="producto">
+ <img src="tienda\html\img\syna\4.png"><h3>Camiseta Syna World Halloween</h3>
+  </div>    
+  <div class="producto">
+ <img src="C:\Users\PC\Desktop\tienda\html\img\syna\5.png"><h3>Camiseta Syna World Negro</h3>
+  </div>
+  <div class="producto">
+ <img src="tienda\html\img\syna\6.png"><h3>Cortavientos Syna World Neon</h3>
+  </div>
+    <div class="producto">
+ <img src="tienda\html\img\syna\7.png"><h3>Pantalón Syna World Neon</h3>
+    </div>
+  <div class="producto">
+ <img src="tienda\html\img\syna\8.png"><h3>Cortavientos Syna World Negro</h3>
+</div>
+<div class="producto">
+<img src="tienda\html\img\syna\9.png"><h3>Pantalón Syna World Negro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\10.png"><h3>Sudadera Syna World Blanco</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\syna\11.png"><h3>Pantalón Syna World Blanco</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\syna\12.png"><h3>Sudadera Syna World Negro</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\syna\13.png"><h3>Pantalón Syna World Negro</h3>
+  </div>
+    <div class="producto">
+<img src="tienda\html\img\syna\14.png"><h3>Sudadera Syna World Azul</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\15.png"><h3>Sudadera Syna World Negro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\16.png"><h3>Camiseta Syna World Tropical</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\17.png"><h3>Sudadera Syna World Gris</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\18.png"><h3>Pantalón Syna World Gris</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\19.png"><h3>Sudadera Syna World Negro</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\20.png"><h3>Pantalón Syna World Negro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\21.png"><h3>Sudadera Syna World Negro</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\22.png"><h3>Pantalón Syna World Negro</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\23.png"><h3>Camiseta Syna World Negro</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\24.png"><h3>Sudadera Syna World Negro</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\25.png"><h3>Pantalón Syna World Negro</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\26.png"><h3>Camiseta Syna World Evil</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\27.png"><h3>Camiseta Syna World Scream Ghostface</h3>
+  </div>
+    <div class="producto">
+<img src="tienda\html\img\syna\28.png"><h3>Camiseta Syna World Phantom Yellow</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\29.png"><h3>Camiseta Syna World Playboy</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\30.png"><h3>Camiseta Syna World HotWheels</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\31.png"><h3>Conjunto Syna World Azul</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\32.png"><h3>Conjunto Syna World Gris</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\33.png"><h3>Conjunto Syna World Rojo</h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\34.png"><h3>Conjunto Syna World Gris</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\35.png"><h3>Conjunto Syna World Rojo 2</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\36.png"><h3>Conjunto Syna World largo </h3>
+  </div>
+   <div class="producto">
+<img src="tienda\html\img\syna\37.png"><h3>Conjunto Syna World Corto </h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\38.png"><h3>Conjunto Syna World Gris </h3>
+  </div>
+    <div class="producto">
+<img src="tienda\html\img\syna\39.png"><h3>Conjunto Syna World Azul</h3>
+  </div>
+  <div class="producto">
+<img src="tienda\html\img\syna\40.png"><h3>Conjuntos Syna World </h3>
+  </div>
+    <!-- Agrega más productos aquí siguiendo la misma estructura -->
+</section>
+
+<footer>
+  <p>&copy; 2025 Streetwear Store - Syna World.</p>
+  <div class="social">
+    <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
+
+  </div>
+</footer>
+  <!-- Flecha para subir -->
+  <a href="#inicio" class="subir" title="Volver al inicio">&#8679;</a>
+
+</body>
+</html>
