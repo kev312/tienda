@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jordan - Streetwear Store</title>
+  <link rel="icon" href="tienda\logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --neon-color: #39ff14;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color);
+    }
+
+    header p {
+      font-size: 1.2em;
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .producto h3, .producto p {
+      margin: 10px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social {
+      margin-top: 10px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+  </style>
+  <script>
+    const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+    document.documentElement.style.setProperty('--neon-color', randomColor);
+  </script>
+</head>
+<body>
+  <header>
+    <img src="tienda\img_index\logo_jordan.png">
+    <!-- Botón para volver a la página principal -->
+<div style="text-align: center; margin-top: 20px;">
+  <a href="tienda\index.html" style="
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--neon-color);
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+    transition: background-color 0.3s ease;
+  " onmouseover="this.style.backgroundColor='#000'; this.style.color=var('--neon-color')" onmouseout="this.style.backgroundColor=var('--neon-color'); this.style.color='#000'">
+    ⬅ Volver al inicio
+  </a>
+</div>
+
+  </header>
+  <section class="catalogo">
+    <div class="producto"><a href="ropa_jordan.html"><img src="tienda\img_index\logo_otras.png" alt="Ropa"></a><h3>Ropa</h3></div>
+    <div class="producto"><a href="zapatillas_jordan.html"><img src="tienda\img_index\zapatillas.png" alt="Zapatillas" sizes="120px"></a><h3>Zapatillas</h3></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Streetwear Store - Jordan.</p>
+    <div class="social">
+      <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
+    </div>
+  </footer>
+</body>
+</html>
