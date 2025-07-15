@@ -4,10 +4,104 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adidas Yeezy 350 - Streetwear Store</title>
-  <link rel="icon" href="../logo.png" type="image/x-icon">
+  <link rel="icon" href="logo.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    /* ... (sin cambios en estilos) ... */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --neon-color: #39ff14; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .volver {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--neon-color);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+      transition: all 0.3s ease;
+    }
+
+    .volver a:hover {
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
   </style>
   <script>
     const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
@@ -17,47 +111,47 @@
 </head>
 <body>
 <header>
-  <img src="../img_index/logo_adidas.png">
+  <img src="img_index/logo_adidas.png" alt="Logo Adidas">
 </header>
 <div class="volver">
-  <a href="../index.html">⬅ Volver al inicio</a>
+  <a href="index.html">⬅ Volver al inicio</a>
 </div>
 <section class="catalogo">
   <div class="producto">
-    <img src="../img_html/350/1.png"><h3>Adidas Yeezy 350 v2 "Zebra"</h3>
+    <img src="html/img/350/1.png" alt="Zebra"><h3>Adidas Yeezy 350 v2 "Zebra"</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/2.png"><h3>Adidas Yeezy 350 v2 "Black" Reflectante</h3>
+     <img src="html/img/350/2.png" alt="Black Reflectante"><h3>Adidas Yeezy 350 v2 "Black" Reflectante</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/3.png"><h3>Adidas Yeezy 350 v2 "MX Blue"</h3>
+     <img src="html/img/350/3.png" alt="MX Blue"><h3>Adidas Yeezy 350 v2 "MX Blue"</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/4.png"><h3>Adidas Yeezy 350 v2 "Black" NO Reflectante </h3>
+    <img src="html/img/350/4.png" alt="Black NO Reflectante"><h3>Adidas Yeezy 350 v2 "Black" NO Reflectante</h3>
   </div>    
   <div class="producto">
-    <img src="../img_html/350/5.png"><h3>Adidas Yeezy 350 v2 "White" NO Reflectante</h3>
+    <img src="html/img/350/5.png" alt="White NO Reflectante"><h3>Adidas Yeezy 350 v2 "White" NO Reflectante</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/6.png"><h3>Adidas Yeezy 350 v2 "Beluga"</h3>
+    <img src="html/img/350/6.png" alt="Beluga"><h3>Adidas Yeezy 350 v2 "Beluga"</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/7.png"><h3>Adidas Yeezy 350 v2 "Black and Blue"</h3>
+    <img src="html/img/350/7.png" alt="Black and Blue"><h3>Adidas Yeezy 350 v2 "Black and Blue"</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/8.png"><h3>Adidas Yeezy 350 v2 "White" Reflectante</h3>
+    <img src="html/img/350/8.png" alt="White Reflectante"><h3>Adidas Yeezy 350 v2 "White" Reflectante</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/9.png"><h3>Adidas Yeezy 350 v2 "Sulfur"</h3>
+    <img src="html/img/350/9.png" alt="Sulfur"><h3>Adidas Yeezy 350 v2 "Sulfur"</h3>
   </div>
   <div class="producto">
-    <img src="../img_html/350/10.png"><h3>Adidas Yeezy 350 v2 "Israfil"</h3>
+    <img src="html/img/350/10.png" alt="Israfil"><h3>Adidas Yeezy 350 v2 "Israfil"</h3>
   </div>
 </section>
 <footer>
   <p>&copy; 2025 Streetwear Store - Adidas Yeezy 350 v2.</p>
   <div class="social">
-    <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+    <a href="https://www.instagram.com/streetwear.store01" target="_blank">Instagram</a>
     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
   </div>
 </footer>
