@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corteiz - Streetwear Store</title>
+  <link rel="icon" href="/logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --neon-color: #39ff14; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .volver {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--neon-color);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+      transition: all 0.3s ease;
+    }
+
+    .volver a:hover {
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    .producto p {
+      font-size: 0.85em;
+      color: var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    .subir {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      color: var(--neon-color);
+      font-size: 1.5em;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 0 10px var(--neon-color);
+      transition: transform 0.3s;
+    }
+
+  </style>
+  <script>
+    const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+    document.documentElement.style.setProperty('--neon-color', randomColor);
+  </script>
+</head>
+<body>
+<body id="inicio">
+<header>
+  <img src="/img_index/logo_corteiz.png">
+</header>
+<div class="volver">
+  <a href="/index.html">⬅ Volver al inicio</a>
+</div>
+
+<section class="catalogo">
+  <div class="producto">
+    <img src="/html/img/corteiz/1.png"><h3>Camiseta Corteiz</h3>
+  </div>
+  <div class="producto">
+  <img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\2.png"><h3>Camiseta Corteiz Brasil </h3>
+  </div>
+  <div class="producto">
+ <img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\3.png"><h3>Camiseta Corteiz Brasil 2 </h3>
+  </div>
+ <div class="producto">
+ <img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\4.png"><h3>Camiseta Corteiz Alemania</h3>
+  </div>    
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\5.png"><h3>Camiseta Futbol Corteiz</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\6.png"><h3>Camiseta Futbol Corteiz 2</h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\7.png"><h3>Camiseta "C-star" Negro</h3>
+    </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\8.png"><h3>Camiseta "C-star" Blanco</h3>
+</div>
+<div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\9.png"><h3>Camiseta Corteiz "Heart"</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\10.png"><h3>Camiseta Corteiz "Alcatraz"</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\11.png"><h3>Camiseta Corteiz "NO TIME 4 LUV"</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\12.png"><h3>Camiseta Corteiz x Central Cee </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\13.png"><h3>Camiseta Corteiz  "Rules in the World"</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\14.png"><h3>Camiseta Corteiz x Central Cee </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\15.png"><h3>Pantalones Corteiz</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\16.png"><h3>Cargo Corteiz Negro </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\17.png"><h3>Cargo Corteiz Beige </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\18.png"><h3>Cargo Corteiz Gris </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\19.png"><h3>Baggy shorts Corteiz </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\20.png"><h3>Corteiz Windbreaker</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\21.png"><h3>Corteiz Conjuntos</h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\22.png"><h3>Corteiz Conjunto Brasil </h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\23.png"><h3>Corteiz Conjunto Brasil 2 </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\24.png"><h3>Corteiz Chaquetas </h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\25.png"><h3>Corteiz Chaquetas </h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\26.png"><h3>Corteiz Conjunto Italia </h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\27.png"><h3>Corteiz Conjuntos</h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\28.png"><h3>Corteiz Chaqueta Rules the World</h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\29.png"><h3>Corteiz Conjuntos</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\30.png"><h3>Corteiz Chaqueta de cuero</h3>
+  </div>
+ <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\31.png"><h3>Corteiz Chalecos</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\32.png"><h3>Corteiz Pantalones Cortos</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\33.png"><h3>Corteiz Chaquetas</h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\34.png"><h3>Corteiz Cargo Gris</h3>
+  </div>
+    <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\35.png"><h3>Corteiz Cargo Negro</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\36.png"><h3>Corteiz Cargo Morado</h3>
+  </div>
+  <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\37.png"><h3>Corteiz Cargo Amarillo</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\38.png"><h3>Corteiz Cargo Rojo</h3>
+  </div>
+   <div class="producto">
+<img src="C:\Users\PC\Desktop\tienda\html\img\corteiz\39.png"><h3>Corteiz Cargo Verde</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/corteiz/40.png"><h3>Corteiz Cargo Militar</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/corteiz/41.png"><h3>Corteiz Jersey "C - STAR"</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/corteiz/42.png"><h3>Corteiz Cazadora Blanca</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/corteiz/43.png"><h3>Corteiz Jersey Militar</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/corteiz/44.png"><h3>Corteiz Cazadora Azul</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/corteiz/45.png"><h3>Corteiz Chaqueta Denim</h3>
+  </div>
+    <!-- Agrega más productos aquí siguiendo la misma estructura -->
+</section>
+
+<footer>
+  <p>&copy; 2025 Streetwear Store - Corteiz.</p>
+  <div class="social">
+    <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
+  </div>
+</footer>
+  <!-- Flecha para subir -->
+  <a href="#inicio" class="subir" title="Volver al inicio">&#8679;</a>
+</body>
+</html>
