@@ -61,6 +61,7 @@
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
+      cursor: pointer;
     }
 
     .producto:hover {
@@ -99,46 +100,139 @@
       text-decoration: none;
       font-size: 1.2em;
     }
+
+    /* ======== MODAL DE GALERÍA ======== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 5% auto;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid var(--neon-color);
+      box-shadow: 0 0 10px var(--neon-color);
+    }
+
+    .close {
+      position: absolute;
+      top: -10px;
+      right: 15px;
+      color: var(--neon-color);
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .gallery img {
+      width: 100px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 2px solid var(--neon-color);
+      transition: transform 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px var(--neon-color);
+    }
   </style>
+
   <script>
+    // Cambiar aleatoriamente el color del neón
     const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
     const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
     document.documentElement.style.setProperty('--neon-color', randomColor);
+
+    // Funciones para el modal
+    function openModal() {
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    function changeImage(src) {
+      document.getElementById('mainImage').src = src;
+    }
   </script>
 </head>
 <body>
   <header>
-    <img src="/img_index/logo_nike.jpg">
-    <!-- Botón para volver a la página principal -->
-<div style="text-align: center; margin-top: 20px;">
-  <a href="/index.html" style="
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--neon-color);
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
-    transition: background-color 0.3s ease;
-  " onmouseover="this.style.backgroundColor='#000'; this.style.color=var('--neon-color')" onmouseout="this.style.backgroundColor=var('--neon-color'); this.style.color='#000'">
-    ⬅ Volver al inicio
-  </a>
-</div>
+    <img src="/img_index/logo_nike.jpg" alt="Nike Logo">
 
+    <!-- Botón de volver -->
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="/index.html" style="
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--neon-color);
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+        transition: background-color 0.3s ease;
+      " onmouseover="this.style.backgroundColor='#000'; this.style.color='var(--neon-color)'" onmouseout="this.style.backgroundColor='var(--neon-color)'; this.style.color='#000'">
+        ⬅ Volver al inicio
+      </a>
+    </div>
   </header>
+
+  <!-- Catálogo -->
   <section class="catalogo">
-    <div class="producto"><a href="ropa_nike.html"><img src="/img_index/logo_otras.png" alt="Ropa"></a><h3>Ropa</h3></div>
+    <!-- Producto con galería -->
+    <div class="producto" onclick="openModal()">
+      <img src="/img_index/nike_tech_principal.png" alt="Sudadera Nike Tech">
+      <h3>Sudadera - Nike Tech</h3>
+    </div>
+
+    <!-- Otros productos -->
     <div class="producto"><a href="zapatillas_nike.html"><img src="/img_index/zapatillas.png" alt="Zapatillas"></a><h3>Zapatillas</h3></div>
     <div class="producto"><a href="deportivo.html"><img src="/img_index/logo_deportiva.png" alt="Deportiva"></a><h3>Ropa Deportiva</h3></div>
   </section>
 
+  <!-- Modal con galería -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="mainImage" src="/img_index/nike_tech_principal.png" alt="Sudadera principal">
+      <div class="gallery">
+        <img src="/img_index/nike_tech_1.png" onclick="changeImage(this.src)">
+        <img src="/img_index/nike_tech_2.png" onclick="changeImage(this.src)">
+        <img src="/img_index/nike_tech_3.png" onclick="changeImage(this.src)">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Streetwear Store - Nike.</p>
     <div class="social">
       <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
-      
     </div>
   </footer>
 </body>
