@@ -1,1 +1,454 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Otras Marcas - Streetwear Store</title>
+  <link rel="icon" href="/logo.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --neon-color: #39ff14; }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    header {
+      background-color: #111;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--neon-color);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .volver {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .volver a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--neon-color);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--neon-color), 0 0 20px var(--neon-color);
+      transition: all 0.3s ease;
+    }
+
+    .volver a:hover {
+      background-color: #000;
+      color: var(--neon-color);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .producto {
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--neon-color);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .producto h3 {
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color);
+    }
+
+    .producto p {
+      font-size: 0.85em;
+      color: var(--neon-color);
+    }
+
+    footer {
+      background-color: #111;
+      color: var(--neon-color);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 2px solid var(--neon-color);
+    }
+
+    .social a {
+      margin: 0 10px;
+      color: var(--neon-color);
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    .subir {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #111;
+      border: 2px solid var(--neon-color);
+      color: var(--neon-color);
+      font-size: 1.5em;
+      padding: 10px 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 0 10px var(--neon-color);
+      transition: transform 0.3s;
+    }
+
+    .subir:hover {
+      transform: scale(1.2);
+    }
+  </style>
+  <script>
+    const neonColors = ['#39ff14', '#00ffff', '#ff003c'];
+    const randomColor = neonColors[Math.floor(Math.random() * neonColors.length)];
+    document.documentElement.style.setProperty('--neon-color', randomColor);
+  </script>
+</head>
+<body id="inicio">
+<body>
+
+<header>
+  <img src="/img_index/logo_otras.png">
+</header>
+<div class="volver">
+  <a href="/index.html">⬅ Volver al inicio</a>
+</div>
+<section class="catalogo">
+  <div class="producto">
+    <img src="/html/img/otras/vlone22.png"><h3>Sudadera Vlone</h3>
+  </div>
+  <div class="producto">
+    <img src="/html/img/otras/vlone23.png"><h3>Sudadera Vlone</h3>
+  </div>
+  <div class="producto">
+   <img src="/html/img/otras/vlone24.png"><h3>Sudadera Vlone</h3>
+  </div>
+ <div class="producto">
+ <img src="/html/img/otras/vlone25.png"><h3>Sudadera Vlone</h3>
+  </div>    
+  <div class="producto">
+ <img src="/html/img/otras/vlone26.png"><h3>Sudadera Vlone</h3>
+  </div>
+  <div class="producto">
+ <img src="/html/img/otras/vlone27.png"><h3>Sudaderas Vlone</h3>
+  </div>
+    <div class="producto">
+ <img src="/html/img/otras/vlone28.png"><h3>Chaqueta Vlone</h3>
+    </div>
+  <div class="producto">
+ <img src="/html/img/otras/vlone29.png"><h3>Vaqueros Vlone</h3>
+</div>
+<div class="producto">
+<img src="/html/img/otras/rhude1.png"><h3>Camiseta Rhude</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/rhude2.png"><h3>Camiseta Rhude</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/rhude3.png"><h3>Camiseta Rhude</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/rhude4.png"><h3>Camiseta Rhude</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/rhude5.png"><h3>Pantalón Rhude</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/rhude6.png"><h3>Pantalón Rhude</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/rhude7.png"><h3>Pantalones Rhude</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/rhude8.png"><h3>Pantalones Rhude</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/rhude9.png"><h3>Pantalones Rhude</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/rhude10.png"><h3>Conjunto Rhude</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/hellstar1.png"><h3>Camiseta Hellstar</h3>
+  </div>
+   <div class="producto">
+<img src="/html\img/otras/hellstar2.png"><h3>Camiseta Hellstar</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/hellstar3.png"><h3>Camiseta Hellstar</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/hellstar4.png"><h3>Camiseta Hellstar</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/hellstar5.png"><h3>Camiseta Hellstar</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/hellstar6.png"><h3>Camiseta Hellstar</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/hellstar7.png"><h3>Camiseta Hellstar</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/hellstar8.png"><h3>Pantalon Hellstar</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/hellstar9.png"><h3>Jersey Hellstar</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/hellstar10.png"><h3>Conjunto Hellstar</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/hellstar11.png"><h3>Chaqueta Hellstar </h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/hellstar12.png"><h3>Chaqueta Hellstar</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/hellstar13.png"><h3>Pantalones Hellstar</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels1.png"><h3>Sudaderas Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels2.png"><h3>Pantalones Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels3.png"><h3>Camisetas Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels4.png"><h3>Bañador Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels5.png"><h3>Camiseta Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels6.png"><h3>Camisetas Palm Angels</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/angels7.png"><h3>Conjunto Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels8.png"><h3>Conjunto Palm Angels</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/angels9.png"><h3>Pantalones Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels10.png"><h3>Pantalones Cortos Palm Angels</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/angels11.png"><h3>Conjunto Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/angels12.png"><h3>Conjunto Palm Angels</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/angels13.png"><h3>Conjunto Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/vlone14.png"><h3>Camisetas Vlone</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/vlone15.png"><h3>Camisetas Vlone</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/vlone16.png"><h3>Camisetas Vlone</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/vlone17.png"><h3>Camisetas Vlone</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/vlone18.png"><h3>Camisetas Vlone</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/vlone19.png"><h3>Camisetas Vlone</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/vlone20.png"><h3>Camisetas Vlone</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/vlone21.png"><h3>Camisetas Vlone</h3>
+  </div>
+     <div class="producto">
+<img src="/html/img/otras/vlone22.png"><h3>Camisetas Vlone X Palm Angels</h3>
+  </div>
+<div class="producto">
+<img src="/html/img/otras/vlone23.png"><h3>Camisetas Vlone X Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/vlone24.png"><h3>Camisetas Vlone X Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/vlone25.png"><h3>Camisetas Vlone X Palm Angels</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/vlone26.png"><h3>Camisetas Vlone X Palm Angels</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/revenge1.png"><h3>Sudadera Revenge</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/revenge2.png"><h3>Chaqueta Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge3.png"><h3>Sudadera Revenge</h3>
+  </div>  
+  <div class="producto">
+<img src="/html/img/otras/revenge4.png"><h3>Chaqueta Revenge</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/revenge5.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge6.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge7.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge8.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge9.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge10.png"><h3>Sudadera Revenge</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/revenge11.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge12.png"><h3>Sudadera Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge13.png"><h3>Sudadera Revenge</h3>
+  </div>
+     <div class="producto">
+<img src="/html/img/otras/revenge14.png"><h3>Vaqueros Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge15.png"><h3>Camiseta Revenge</h3>
+  </div>
+     <div class="producto">
+<img src="/html/img/otras/revenge16.png"><h3>Camiseta Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge17.png"><h3>Camiseta Revenge</h3>
+  </div>
+     <div class="producto">
+<img src="/html/img/otras/revenge18.png"><h3>Camiseta Revenge</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/revenge19.png"><h3>Camiseta Revenge</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/revenge20.png"><h3>Pantalon Revenge</h3>
+  </div>
+   <div class="producto">
+<img src="/html/img/otras/ow1.png"><h3>Camiseta OFF - WHITE</h3>
+  </div>
+     <div class="producto">
+<img src="/html/img/otras/ow2.png"><h3>Camiseta OFF - WHITE</h3>
+  </div>
+    <div class="producto">
+<img src="/html/img/otras/ow3.png"><h3>Camiseta OFF - WHITE</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/ow4.png"><h3>Camiseta OFF - WHITE</h3>
+  </div>
+  <div class="producto">
+<img src="/html/img/otras/chaquetaOW_1.png"><h3>Chaqueta OFF - WHITE</h3>
+  </div>
+<div class="prodcuto">
+<img src="/html/img/otras/chaquetaOW_2png.png"><h3>Chaqueta OFF - WHITE x Milan</h3>
+</div>
+  <div class="prodcuto">
+<img src="/html/img/otras/chaquetaOW_3.png"><h3>Chaqueta OFF - WHITE</h3>
+</div>
+  <div class="prodcuto">
+<img src="/html/img/otras/chaquetaOW_4.png"><h3>Chaqueta OFF - WHITE</h3>
+</div>
+  
+<div class="paginacion-circular">
+  <a href="/html/otras.html" >1</a>
+  <a href="/html/otras2.html">2</a>
+   <a href="/html/otras3.html"class="pagina-activa">3</a>
+  <a href="/html/otras3.html">⭢</a>
+</div>
+<style>
+.paginacion-circular {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.paginacion-circular a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--neon-color);
+  border-radius: 50%;
+  text-decoration: none;
+  color: var(--neon-color);
+  font-weight: bold;
+  font-size: 1.1em;
+  text-shadow: 0 0 5px var(--neon-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.paginacion-circular a:hover,
+.paginacion-circular .pagina-activa {
+  background-color: var(--neon-color);
+  color: #000;
+}
+</style>
+    <!-- Agrega más productos aquí siguiendo la misma estructura -->
+</section>
+
+<footer>
+  <p>&copy; 2025 Streetwear Store - Otras Marcas.</p>
+  <div class="social">
+    <a href="https://www.instagram.com/streetwear.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear" target="_blank">Contacto</a>
+
+  </div>
+</footer>
+  <!-- Flecha para subir -->
+  <a href="#inicio" class="subir" title="Volver al inicio">&#8679;</a>
+
+</body>
+</html>
