@@ -350,7 +350,7 @@
       </div>
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input-area">
-        <input type="text" id="chatInput" placeholder="Escribe tu consulta..." autocomplete="off" aria-label="Escribe tu mensaje">
+        <input type="text" id="chatInput" placeholder="Escribe tu consulta..." autocomplete="off" aria-label="Escribe tu mensaje" maxlength="300">
         <button class="chat-send" id="chatSend" aria-label="Enviar mensaje"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
       <div class="chat-offline-note" id="chatOfflineNote"></div>
@@ -500,15 +500,23 @@
 
     /*
      * ─────────────────────────────────────────────────
-     *  PEGA AQUÍ LA URL DE TU WEBHOOK DE n8n
+     *  BACKEND DEL ASISTENTE IA
      * ─────────────────────────────────────────────────
+     *  Por defecto llama a la función serverless /api/chat
+     *  (ver api/chat.js), que habla con la API de Claude
+     *  desde el servidor sin exponer ninguna clave en el
+     *  navegador. Si el endpoint falla, tarda demasiado o
+     *  no está desplegado, el chat cae automáticamente en
+     *  búsqueda local (localFallback).
      *
-     *  Reemplaza 'TU_WEBHOOK_AQUI' con la URL real.
-     *  Mientras sea 'TU_WEBHOOK_AQUI', el chat usará
-     *  búsqueda local automática como fallback.
+     *  ¿Prefieres n8n u otro backend? Cambia esta URL por
+     *  la de tu webhook; el resto del código no cambia.
      * ─────────────────────────────────────────────────
      */
-    var N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/chat-assistant';
+    var AI_ENDPOINT_URL = '/api/chat';
+    var AI_TIMEOUT_MS = 12000;
+    var MAX_HISTORY = 20;
+    var MAX_MSG_LENGTH = 300;
 
     var CONTACT_URL = 'https://mail.google.com/mail/?view=cm&fs=1&to=streetwearstorex1@gmail.com&su=Consulta%20Streetwear';
     var INSTAGRAM_URL = 'https://www.instagram.com/streetwear.store01';
@@ -580,67 +588,181 @@
     function sendMessage(){
       var text = chatInput.value.trim();
       if(!text || isProcessing) return;
+      if(text.length > MAX_MSG_LENGTH) text = text.slice(0, MAX_MSG_LENGTH);
       chatInput.value = '';
       appendMessage('user', text);
-      chatHistory.push({role:'user', content:text});
+      pushHistory('user', text);
       isProcessing = true;
       chatSendBtn.disabled = true;
       showTyping();
       processMessage(text);
     }
 
-    function processMessage(text){
-      if(N8N_WEBHOOK_URL !== 'http://localhost:5678/webhook/chat-assistant'){
-        callN8N(text).then(function(reply){
-          removeTyping();
-          appendMessage('bot', reply);
-          chatHistory.push({role:'assistant', content:reply});
-          isProcessing = false;
-          chatSendBtn.disabled = false;
-        }).catch(function(err){
-          console.warn('Error n8n, usando fallback local:', err);
-          removeTyping();
-          localFallback(text);
-        });
-      } else {
-        setTimeout(function(){
-          removeTyping();
-          localFallback(text);
-        }, 600 + Math.random() * 800);
-      }
+    function pushHistory(role, content){
+      chatHistory.push({role: role, content: content});
+      if(chatHistory.length > MAX_HISTORY) chatHistory = chatHistory.slice(-MAX_HISTORY);
     }
 
-    function callN8N(message){
-      return fetch(N8N_WEBHOOK_URL, {
+    function finishProcessing(){
+      isProcessing = false;
+      chatSendBtn.disabled = false;
+    }
+
+    function processMessage(text){
+      callAI(text).then(function(reply){
+        removeTyping();
+        appendMessage('bot', reply);
+        pushHistory('assistant', reply);
+        chatStatusSub.textContent = 'En linea';
+        chatOfflineNote.textContent = '';
+        finishProcessing();
+      }).catch(function(err){
+        console.warn('IA no disponible, usando busqueda local:', err);
+        removeTyping();
+        chatStatusSub.textContent = 'Modo local';
+        chatOfflineNote.textContent = 'Respondiendo con busqueda local (el asistente IA no esta disponible ahora)';
+        localFallback(text);
+      });
+    }
+
+    function callAI(message){
+      var controller = new AbortController();
+      var timeoutId = setTimeout(function(){ controller.abort(); }, AI_TIMEOUT_MS);
+
+      return fetch(AI_ENDPOINT_URL, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({message: message, history: chatHistory})
+        body: JSON.stringify({message: message, history: chatHistory}),
+        signal: controller.signal
       }).then(function(res){
+        clearTimeout(timeoutId);
         if(!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       }).then(function(data){
+        if(data.error) throw new Error(data.error);
         if(data.reply) return data.reply;
         if(data.output) return data.output;
         if(data.message) return data.message;
         if(typeof data === 'string') return data;
-        return JSON.stringify(data);
+        throw new Error('Respuesta no reconocida');
+      }).catch(function(err){
+        clearTimeout(timeoutId);
+        throw err;
       });
     }
 
-    function localFallback(text){
-      var q = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      var found = [];
-
-      localCatalog.forEach(function(item){
-        var nameNorm = item.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        var aliases = searchAliases[item.name.toLowerCase()] || [];
-        if(nameNorm.indexOf(q) !== -1){ found.push(item); return; }
-        for(var i = 0; i < aliases.length; i++){
-          var aliasNorm = aliases[i].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-          if(aliasNorm.indexOf(q) !== -1 || q.indexOf(aliasNorm) !== -1){ found.push(item); return; }
+    /* ---------- utilidades de texto (normalizado, tokens, fuzzy) ---------- */
+    function normalize(s){
+      return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    }
+    function tokenize(s){
+      var t = normalize(s).split(' ').filter(Boolean);
+      return t;
+    }
+    var STOPWORDS = ['de','la','el','los','las','un','una','unos','unas','y','o','en','con','para',
+      'por','que','me','mi','tu','su','del','al','hay','tienes','tienen','tenes','quiero','busco',
+      'buscas','necesito','algo','alguna','algun','favor','porfa','porfavor','gracias','hola','ver',
+      'quisiera','dame','pasame'];
+    function meaningfulTokens(tokens){
+      var t = tokens.filter(function(w){ return w.length > 1 && STOPWORDS.indexOf(w) === -1; });
+      return t.length ? t : tokens;
+    }
+    function levenshtein(a, b){
+      if(a === b) return 0;
+      var m = a.length, n = b.length;
+      if(!m) return n; if(!n) return m;
+      var prev = []; for(var j = 0; j <= n; j++) prev[j] = j;
+      for(var i = 1; i <= m; i++){
+        var cur = [i];
+        for(var k = 1; k <= n; k++){
+          var cost = a[i-1] === b[k-1] ? 0 : 1;
+          cur[k] = Math.min(prev[k] + 1, cur[k-1] + 1, prev[k-1] + cost);
         }
-      });
+        prev = cur;
+      }
+      return prev[n];
+    }
+    function fuzzyMatch(word, target){
+      if(!word || !target) return false;
+      if(target.indexOf(word) !== -1 || word.indexOf(target) !== -1) return true;
+      var maxDist = target.length >= 6 ? 2 : (target.length >= 4 ? 1 : 0);
+      return levenshtein(word, target) <= maxDist;
+    }
 
+    /* ---------- búsqueda de catálogo por tokens con puntuación ---------- */
+    function searchCatalog(query){
+      var tokens = meaningfulTokens(tokenize(query));
+      if(!tokens.length) return [];
+      var results = [];
+      localCatalog.forEach(function(item){
+        var aliasList = searchAliases[item.name.toLowerCase()] || [item.name.toLowerCase()];
+        var nameNorm = normalize(item.name);
+        var score = 0;
+        tokens.forEach(function(tok){
+          if(nameNorm.indexOf(tok) !== -1 || tok.indexOf(nameNorm) !== -1){ score += 2; return; }
+          for(var i = 0; i < aliasList.length; i++){
+            var a = normalize(aliasList[i]);
+            if(a.indexOf(tok) !== -1 || tok.indexOf(a) !== -1){ score += 2; return; }
+            if(tok.length >= 3 && fuzzyMatch(tok, a)){ score += 1; return; }
+          }
+        });
+        if(score > 0) results.push({item: item, score: score});
+      });
+      results.sort(function(a, b){ return b.score - a.score; });
+      return results.map(function(r){ return r.item; }).slice(0, 4);
+    }
+
+    /* ---------- intenciones frecuentes (FAQ) ---------- */
+    var FAQ_INTENTS = [
+      {id:'saludo', keywords:['hola','buenas','buenos dias','buenas tardes','buenas noches','hey','ola'],
+        reply:'Hola! En que puedo ayudarte? Puedes preguntarme por una marca (Nike, Jordan, Adidas...) o por envios, tallas y pagos.', showContact:false},
+      {id:'envios', keywords:['envio','envios','entrega','tiempo de entrega','cuanto tarda','plazo','shipping'],
+        reply:'Los plazos de envio varian segun el producto y el proveedor. Para confirmarte el plazo exacto de tu pedido, escribenos y te lo confirmamos al momento.', showContact:true},
+      {id:'precio', keywords:['precio','precios','cuanto cuesta','vale','coste','costo'],
+        reply:'Los precios varian segun el modelo y la talla. Entra al catalogo de la marca que te interese para ver el detalle, o dime que marca buscas.', showContact:false},
+      {id:'tallas', keywords:['talla','tallas','numero','numeracion','guia de tallas'],
+        reply:'Las tallas disponibles se muestran en la ficha de cada producto. Si tienes dudas sobre que talla pedir, cuentanos tu talla habitual y te asesoramos.', showContact:true},
+      {id:'pago', keywords:['pago','pagos','metodo de pago','como pago','tarjeta','bizum','paypal'],
+        reply:'Para gestionar tu pago de forma segura, contacta con nosotros y te indicamos las opciones disponibles para tu pedido.', showContact:true},
+      {id:'devolucion', keywords:['devolucion','devoluciones','cambio','cambios','garantia','reembolso'],
+        reply:'Si necesitas una devolucion o cambio, escribenos con tu numero de pedido y te ayudamos con el proceso.', showContact:true},
+      {id:'contacto', keywords:['contacto','hablar con alguien','persona','humano','whatsapp','telefono','llamar'],
+        reply:'Claro, puedes escribirnos directamente:', showContact:true},
+      {id:'gracias', keywords:['gracias','genial','perfecto'],
+        reply:'De nada! Si necesitas algo mas, aqui estoy.', showContact:false}
+    ];
+    function matchIntent(query){
+      var norm = normalize(query);
+      for(var i = 0; i < FAQ_INTENTS.length; i++){
+        var intent = FAQ_INTENTS[i];
+        for(var j = 0; j < intent.keywords.length; j++){
+          if(norm.indexOf(normalize(intent.keywords[j])) !== -1) return intent;
+        }
+      }
+      return null;
+    }
+
+    function buildContactButtonsHTML(){
+      var html = '<a href="'+CONTACT_URL+'" target="_blank" rel="noopener noreferrer" class="chat-contact-btn">';
+      html += '<i class="fa-solid fa-envelope"></i> Contactar por email</a><br>';
+      html += '<a href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener noreferrer" class="chat-contact-btn" style="margin-top:6px;">';
+      html += '<i class="fa-brands fa-instagram"></i> Escribir por Instagram</a>';
+      return html;
+    }
+
+    function localFallback(text){
+      var intent = matchIntent(text);
+      if(intent){
+        var introHtml = escHTML(intent.reply);
+        if(intent.showContact) introHtml += '<br><br>' + buildContactButtonsHTML();
+        appendMessageHTML('bot', introHtml);
+        pushHistory('assistant', intent.reply);
+        finishProcessing();
+        return;
+      }
+
+      var found = searchCatalog(text);
       if(found.length > 0){
         var html = found.length === 1 ? 'Encontre esto para ti:' : 'Encontre ' + found.length + ' resultados:';
         found.forEach(function(item){ html += buildProductCardHTML(item); });
@@ -648,17 +770,13 @@
         html += '<button class="chat-chip" onclick="chatWidgetChip(\'Ver mas marcas\')">Ver mas marcas</button>';
         html += '</div>';
         appendMessageHTML('bot', html);
-        chatHistory.push({role:'assistant', content:'Resultados: ' + found.map(function(f){return f.name;}).join(', ')});
+        pushHistory('assistant', 'Resultados: ' + found.map(function(f){return f.name;}).join(', '));
       } else {
         var safe = $sanitize(text);
         var noHtml = 'No he encontrado "' + safe.html + '" en nuestro catalogo actual.<br><br>';
         noHtml += 'Sin embargo, podemos conseguirlo a traves de nuestros proveedores. ';
         noHtml += 'Contactanos directamente y te ayudamos:';
-        noHtml += '<a href="'+CONTACT_URL+'" target="_blank" rel="noopener noreferrer" class="chat-contact-btn">';
-        noHtml += '<i class="fa-solid fa-envelope"></i> Contactar por email</a>';
-        noHtml += '<br>';
-        noHtml += '<a href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener noreferrer" class="chat-contact-btn" style="margin-top:6px;">';
-        noHtml += '<i class="fa-brands fa-instagram"></i> Escribir por Instagram</a>';
+        noHtml += buildContactButtonsHTML();
         noHtml += '<div class="chat-quick-replies" style="margin-top:10px;">';
         noHtml += '<button class="chat-chip" onclick="chatWidgetChip(\'Nike\')">Nike</button>';
         noHtml += '<button class="chat-chip" onclick="chatWidgetChip(\'Jordan\')">Jordan</button>';
@@ -666,10 +784,9 @@
         noHtml += '<button class="chat-chip" onclick="chatWidgetChip(\'Bape\')">Bape</button>';
         noHtml += '</div>';
         appendMessageHTML('bot', noHtml);
-        chatHistory.push({role:'assistant', content:'No encontrado. Ofrecer contacto.'});
+        pushHistory('assistant', 'No encontrado. Ofrecer contacto.');
       }
-      isProcessing = false;
-      chatSendBtn.disabled = false;
+      finishProcessing();
     }
 
     function buildProductCardHTML(item){
@@ -750,9 +867,6 @@
       return now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
     }
 
-    if(N8N_WEBHOOK_URL === 'http://localhost:5678/webhook/chat-assistant'){
-      chatOfflineNote.textContent = 'Modo local: busqueda rapida sin conexion a IA';
-    }
   </script>
 </body>
 </html>
